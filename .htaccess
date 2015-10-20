@@ -1,0 +1,30 @@
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+</IfModule>
+
+<IfModule mod_headers.c>
+  <FilesMatch "\.(ttf|otf|eot|woff)$">
+    Header set Access-Control-Allow-Origin "http://domain02.jp"
+  </FilesMatch>
+</IfModule>
+
+# Apache config
+<FilesMatch ".(eot|ttf|otf|woff)">
+ Header set Access-Control-Allow-Origin "*"
+</FilesMatch>
+# BEGIN WordPress
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+</IfModule>
+
+# END WordPress
